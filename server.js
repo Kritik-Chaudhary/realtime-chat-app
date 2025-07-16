@@ -8,7 +8,7 @@ const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3003;
 
-// Socket.IO configuration for production and development
+// Socket.IO configuration optimized for Vercel
 const io = socketIo(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
@@ -24,7 +24,13 @@ const io = socketIo(server, {
     methods: ["GET", "POST"],
     credentials: true
   },
-  allowEIO3: true // Allow Engine.IO v3 clients
+  allowEIO3: true, // Allow Engine.IO v3 clients
+  pingTimeout: 60000, // 60 seconds
+  pingInterval: 25000, // 25 seconds
+  upgradeTimeout: 10000, // 10 seconds
+  maxHttpBufferSize: 1e6, // 1MB
+  transports: ['websocket', 'polling'], // Allow both transports
+  allowUpgrades: true
 });
 
 // Middleware
@@ -77,8 +83,11 @@ io.on('connection', (socket) => {
       timestamp: new Date().toISOString()
     };
     
-    // Add to messages array
+    // Add to messages array (limit to last 100 messages to save memory)
     messages.push(message);
+    if (messages.length > 100) {
+      messages = messages.slice(-100);
+    }
     
     console.log('Message added:', message);
     console.log('Total messages:', messages.length);

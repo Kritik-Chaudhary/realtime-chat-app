@@ -1,11 +1,15 @@
-// Initialize Socket.IO client with better error handling
+// Initialize Socket.IO client with optimized settings for Vercel
 const socket = io({
   reconnection: true,
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000,
-  maxReconnectionAttempts: 5,
+  maxReconnectionAttempts: Infinity, // Keep trying to reconnect
   timeout: 20000,
-  forceNew: true
+  forceNew: false, // Reuse existing connection when possible
+  upgrade: true,
+  transports: ['websocket', 'polling'], // Allow both transport methods
+  autoConnect: true,
+  randomizationFactor: 0.5
 });
 
 // Handle dark mode toggle
