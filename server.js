@@ -8,14 +8,18 @@ const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3003;
 
-// Socket.IO configuration optimized for Vercel
+// Socket.IO configuration optimized for Railway and other hosting platforms
 const io = socketIo(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
       ? function(origin, callback) {
-          // Allow requests from any vercel.app domain and your specific domain
+          // Allow requests from any hosting platform domain and your specific domain
           if (!origin) return callback(null, true); // Allow requests with no origin (mobile apps, etc.)
-          if (origin.includes('vercel.app') || origin.includes('localhost')) {
+          if (origin.includes('vercel.app') || 
+              origin.includes('railway.app') || 
+              origin.includes('render.com') || 
+              origin.includes('herokuapp.com') || 
+              origin.includes('localhost')) {
             return callback(null, true);
           }
           return callback(new Error('Not allowed by CORS'));
