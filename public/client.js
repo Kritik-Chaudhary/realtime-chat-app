@@ -1,5 +1,12 @@
-// Initialize Socket.IO client for local development
-const socket = io();
+// Initialize Socket.IO client with better error handling
+const socket = io({
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  maxReconnectionAttempts: 5,
+  timeout: 20000,
+  forceNew: true
+});
 
 // Handle dark mode toggle
 const themeToggleButton = document.getElementById('theme-toggle');

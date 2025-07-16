@@ -12,19 +12,41 @@ const PORT = process.env.PORT || 3003;
 const io = socketIo(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
-      ? ["https://realtime-chat-app-98z2.vercel.app", "https://*.vercel.app"]
+      ? function(origin, callback) {
+          // Allow requests from any vercel.app domain and your specific domain
+          if (!origin) return callback(null, true); // Allow requests with no origin (mobile apps, etc.)
+          if (origin.includes('vercel.app') || origin.includes('localhost')) {
+            return callback(null, true);
+          }
+          return callback(new Error('Not allowed by CORS'));
+        }
       : ["http://localhost:3003", "http://127.0.0.1:3003"],
     methods: ["GET", "POST"],
     credentials: true
-  }
+  },
+  allowEIO3: true // Allow Engine.IO v3 clients
 });
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    connectedUsers: users.size,
+    messageCount: messages.length
+  });
+});
+
 // Store messages and users
 let messages = [];
 let users = new Map();
+
+// Enhanced logging
+console.log('Environment:', process.env.NODE_ENV || 'development');
+console.log('Port:', PORT);
 
 // Socket.io connection handling
 io.on('connection', (socket) => {
