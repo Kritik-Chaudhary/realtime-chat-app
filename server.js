@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3003;
 const io = socketIo(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
-      ? ["https://your-app-name.vercel.app", "https://*.vercel.app"]
+      ? ["https://realtime-chat-app-98z2.vercel.app", "https://*.vercel.app"]
       : ["http://localhost:3003", "http://127.0.0.1:3003"],
     methods: ["GET", "POST"],
     credentials: true
