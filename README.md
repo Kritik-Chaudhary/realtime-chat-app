@@ -1,6 +1,6 @@
-# Real-Time Chat App (Local Development)
+# Real-Time Chat App
 
-A simple real-time chat application built with Node.js, Express, and Socket.IO. This version is optimized for local development only.
+A simple real-time chat application built with Node.js, Express, and Socket.IO. Ready for both local development and production deployment on Vercel.
 
 ## Features
 
@@ -70,9 +70,25 @@ This version has been simplified for local development:
 4. User typing indicators show when someone is typing
 5. Online users list shows all connected users
 
+## Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Connect your GitHub repository to Vercel
+3. Vercel will automatically detect the Node.js app and deploy it
+4. Update the CORS origin in server.js with your Vercel domain
+
+### Environment Variables
+
+For production deployment, make sure to set:
+- `NODE_ENV=production`
+- `PORT` (automatically set by Vercel)
+
 ## Technologies Used
 
 - **Backend**: Node.js, Express.js, Socket.IO
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
 - **WebSockets**: Socket.IO for real-time communication
 - **Storage**: localStorage for message persistence
+- **Deployment**: Vercel

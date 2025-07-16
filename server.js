@@ -6,13 +6,16 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
-// Simple Socket.IO configuration for local development
+// Socket.IO configuration for production and development
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3003",
-    methods: ["GET", "POST"]
+    origin: process.env.NODE_ENV === 'production' 
+      ? ["https://your-app-name.vercel.app", "https://*.vercel.app"]
+      : ["http://localhost:3003", "http://127.0.0.1:3003"],
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
