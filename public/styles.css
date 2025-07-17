@@ -575,28 +575,30 @@ body {
     }
     
     /* Hide sidebar on mobile, show as overlay */
-    #sidebar {
-        position: fixed;
-        top: 0;
-        left: -320px;
-        width: 320px;
-        height: 100vh;
-        flex-direction: column;
-        padding: 25px;
-        z-index: 999;
-        transition: left 0.3s ease;
-        border-right: 1px solid #34495e;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    #sidebar.active {
-        left: 0;
-    }
-    
-    /* Show hamburger menu on mobile */
-    .sidebar-toggle {
-        display: flex;
-    }
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 320px;
+    height: 100vh;
+    flex-direction: column;
+    padding: 25px;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    border-right: 1px solid #34495e;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+/* Show hamburger menu on mobile */
+.sidebar-toggle {
+    display: flex;
+}
     
     #online-users {
         flex: 1;
@@ -732,8 +734,9 @@ body {
     }
     
     #sidebar {
-        height: 160px;
-        padding: 10px;
+        padding: 20px;
+        width: 80%;
+        max-width: 300px;
     }
     
     #chat-info {
@@ -790,7 +793,9 @@ body {
 /* Landscape mobile */
 @media (max-width: 768px) and (orientation: landscape) {
     #sidebar {
-        height: 120px;
+        height: 100vh;
+        width: 60%;
+        max-width: 280px;
     }
     
     #chat-header {
