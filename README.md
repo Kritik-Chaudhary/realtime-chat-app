@@ -54,14 +54,6 @@ realtime-chat-app/
 └── README.md          # This file
 ```
 
-## Local Development Only
-
-This version has been simplified for local development:
-- Removed production CORS configurations
-- Removed external CDN dependencies
-- Hardcoded localhost:3003 URL
-- Removed deployment-specific code
-
 ## Usage
 
 1. Open multiple browser tabs/windows to simulate multiple users
@@ -74,10 +66,17 @@ This version has been simplified for local development:
 
 ### Deploy to Railway
 
-1. Install Railway CLI (`npm i -g @railway/cli`).
-2. `railway init` inside the repo.
-3. `railway up` to deploy.
-4. Railway automatically sets PORT; no extra env vars needed.
+1. Fork/clone this repository
+2. Connect your GitHub repo to Railway at [railway.app](https://railway.app)
+3. Railway will automatically:
+   - Detect Node.js application
+   - Install dependencies with `npm install`
+   - Start the app with `npm start`
+   - Set PORT environment variable
+   - Provide HTTPS and domain
+4. Your app will be available at `https://yourproject.up.railway.app/`
+
+**Health Check**: The app includes a health endpoint at `/health` for monitoring.
 
 ## Technologies Used
 
