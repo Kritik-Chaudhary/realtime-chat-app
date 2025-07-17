@@ -1,6 +1,6 @@
 # Real-Time Chat App
 
-A simple real-time chat application built with Node.js, Express, and Socket.IO. Ready for both local development and production deployment on Vercel.
+A simple real-time chat application built with Node.js, Express, and Socket.IO. Ready for both local development and production deployment.
 
 ## Features
 
@@ -72,18 +72,12 @@ This version has been simplified for local development:
 
 ## Deployment
 
-### Deploy to Vercel
+### Deploy to Railway
 
-1. Push your code to GitHub
-2. Connect your GitHub repository to Vercel
-3. Vercel will automatically detect the Node.js app and deploy it
-4. Update the CORS origin in server.js with your Vercel domain
-
-### Environment Variables
-
-For production deployment, make sure to set:
-- `NODE_ENV=production`
-- `PORT` (automatically set by Vercel)
+1. Install Railway CLI (`npm i -g @railway/cli`).
+2. `railway init` inside the repo.
+3. `railway up` to deploy.
+4. Railway automatically sets PORT; no extra env vars needed.
 
 ## Technologies Used
 
@@ -91,4 +85,3 @@ For production deployment, make sure to set:
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
 - **WebSockets**: Socket.IO for real-time communication
 - **Storage**: localStorage for message persistence
-- **Deployment**: Vercel

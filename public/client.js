@@ -1,4 +1,4 @@
-// Initialize Socket.IO client with optimized settings for Vercel
+// Initialize Socket.IO client with optimized settings for Railway deployment
 const socket = io({
   reconnection: true,
   reconnectionDelay: 1000,
