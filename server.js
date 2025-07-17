@@ -47,14 +47,8 @@ app.get('/health', (req, res) => {
 let messages = [];
 let users = new Map();
 
-// Enhanced logging
-console.log('Environment:', process.env.NODE_ENV || 'development');
-console.log('Port:', PORT);
-
 // Socket.io connection handling
 io.on('connection', (socket) => {
-  console.log('New client connected');
-
   // Send message history to newly connected client
   socket.emit('message_history', messages);
 
@@ -72,7 +66,6 @@ io.on('connection', (socket) => {
 
   // Handle new message
   socket.on('send_message', (data) => {
-    console.log('Received message from client:', data);
     const message = {
       id: Date.now(),
       username: data.username,
@@ -86,12 +79,8 @@ io.on('connection', (socket) => {
       messages = messages.slice(-100);
     }
     
-    console.log('Message added:', message);
-    console.log('Total messages:', messages.length);
-    
     // Broadcast message to all clients
     io.emit('new_message', message);
-    console.log('Message broadcasted to all clients');
   });
 
   // Handle user typing
@@ -106,8 +95,6 @@ io.on('connection', (socket) => {
 
   // Handle disconnection
   socket.on('disconnect', () => {
-    console.log('Client disconnected');
-    
     if (socket.username) {
       users.delete(socket.id);
       socket.broadcast.emit('user_left', socket.username);

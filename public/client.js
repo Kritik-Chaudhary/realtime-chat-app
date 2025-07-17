@@ -31,15 +31,8 @@ if (themeToggleButton) {
     }
 })();
 
-// Add connection debugging
-console.log('Socket.IO connecting to the current server');
-console.log('Current URL:', window.location.href);
-
-// Add additional debugging for Socket.IO
+// Socket connection handling
 socket.on('connect', () => {
-    console.log('✅ Socket.IO connected successfully');
-    console.log('Socket ID:', socket.id);
-    console.log('Connected to:', socket.io.uri);
     updateConnectionStatus('Connected', 'green');
     
     // Rejoin if we have a username and we're not on the login screen
@@ -129,7 +122,7 @@ function mergeMessages(localMessages, serverMessages) {
     const merged = Array.from(messageMap.values());
     merged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     
-    console.log('Merged messages:', merged.length, 'from local:', localMessages.length, 'and server:', serverMessages.length);
+    // Messages merged successfully
     return merged;
 }
 
@@ -148,8 +141,6 @@ function debounce(func, wait) {
 
 // Render messages with optimization
 function renderMessages() {
-    console.log('Rendering messages:', messages);
-    
     // Use DocumentFragment for better performance
     const fragment = document.createDocumentFragment();
     
