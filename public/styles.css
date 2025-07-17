@@ -632,19 +632,29 @@ body {
     
     #chat-header {
         padding: 15px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 10px;
+        align-items: center;
     }
     
     #chat-header h3 {
-        font-size: 18px;
-        width: 100%;
-        margin-bottom: 10px;
+        font-size: 16px;
+        flex: 1;
+        margin-bottom: 0;
+    }
+    
+    /* Right side button container on mobile */
+    #chat-header > div:last-child {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
     }
     
     #current-user {
-        font-size: 12px;
-        padding: 6px 12px;
+        font-size: 11px;
+        padding: 4px 8px;
+        white-space: nowrap;
     }
     
     .theme-toggle {
