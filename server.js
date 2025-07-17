@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 443;
 
 // Socket.IO configuration optimized for Railway and other hosting platforms
 const io = socketIo(server, {
