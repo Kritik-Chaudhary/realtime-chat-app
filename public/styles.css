@@ -656,12 +656,23 @@ body {
         align-items: center;
         gap: 6px;
         flex-shrink: 0;
+        min-width: 0;
+    }
+    
+    #connection-status {
+        font-size: 10px;
+        min-width: 70px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     #current-user {
         font-size: 10px;
         padding: 3px 6px;
         white-space: nowrap;
+        flex-shrink: 0;
     }
     
     .theme-toggle {
