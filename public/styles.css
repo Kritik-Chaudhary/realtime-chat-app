@@ -511,28 +511,13 @@ body {
     transform: rotate(0deg) scale(0.9);
 }
 
-/* Enhanced theme toggle button styling */
-.theme-toggle {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+/* Enhanced theme toggle button styling for dark mode */
 [data-theme="dark"] .theme-toggle {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
-}
-
-.theme-toggle:hover {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-    transform: translateY(-1px) scale(1.05);
+    background: #6366f1;
 }
 
 [data-theme="dark"] .theme-toggle:hover {
-    background: linear-gradient(135deg, #4f46e5, #4338ca);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-    transform: translateY(-1px) scale(1.05);
+    background: #4f46e5;
 }
 
 /* Logout button */
