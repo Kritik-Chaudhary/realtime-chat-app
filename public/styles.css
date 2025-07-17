@@ -549,29 +549,36 @@ body {
 /* Responsive design */
 @media (max-width: 768px) {
     body {
-        overflow: auto;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
     }
     
     #app {
-        min-height: 100vh;
-        height: auto;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
     }
     
     #user-section {
-        margin: 20px;
-        padding: 30px;
-        width: calc(100% - 40px);
+        margin: 10px;
+        padding: 20px;
+        width: calc(100% - 20px);
         max-width: none;
     }
     
     .login-container h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
+        font-size: 22px;
+        margin-bottom: 16px;
     }
     
     #chat-container {
         flex-direction: row;
         height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
     }
     
     /* Hide sidebar on mobile, show as overlay */
@@ -631,9 +638,9 @@ body {
     }
     
     #chat-header {
-        padding: 15px;
+        padding: 10px;
         flex-wrap: nowrap;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
     }
     
@@ -647,33 +654,33 @@ body {
     #chat-header > div:last-child {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         flex-shrink: 0;
     }
     
     #current-user {
-        font-size: 11px;
-        padding: 4px 8px;
+        font-size: 10px;
+        padding: 3px 6px;
         white-space: nowrap;
     }
     
     .theme-toggle {
         font-size: 12px;
-        padding: 8px;
-        min-width: 32px;
-        height: 32px;
+        padding: 6px;
+        min-width: 28px;
+        height: 28px;
     }
     
     .logout-button {
         font-size: 12px;
-        padding: 8px;
-        min-width: 32px;
-        height: 32px;
+        padding: 6px;
+        min-width: 28px;
+        height: 28px;
     }
     
     #messages {
-        padding: 15px;
-        gap: 10px;
+        padding: 10px;
+        gap: 8px;
     }
     
     .message {
